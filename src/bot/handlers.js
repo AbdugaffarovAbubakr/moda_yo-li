@@ -839,8 +839,13 @@ export function registerHandlers(bot) {
     if (ctx.session.application?.step === 'fullName') {
       const fullName = message.trim();
 
-      if (fullName.length < 5) {
-        return ctx.reply(language === 'uz' ? TEXT.enterFullNameUz : TEXT.enterFullNameRu, cancelKeyboard(language));
+      if (fullName.length < 2 || /^\d+$/.test(fullName)) {
+        return ctx.reply(
+          language === 'uz'
+            ? "Iltimos, FIOni matn ko'rinishida kiriting. Masalan: Aliyev Ali Valiyevich"
+            : 'Пожалуйста, введите ФИО текстом. Например: Иванов Иван Иванович',
+          cancelKeyboard(language),
+        );
       }
 
       ctx.session.application = {

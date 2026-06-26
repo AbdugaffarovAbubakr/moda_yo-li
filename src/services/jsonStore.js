@@ -17,7 +17,11 @@ export async function readJsonFile(name, defaultValue) {
 
   try {
     const content = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(content);
+    const normalizedContent = content.replace(/^\uFEFF/, '');
+    if (!normalizedContent.trim()) {
+      return defaultValue;
+    }
+    return JSON.parse(normalizedContent);
   } catch (error) {
     if (error.code === 'ENOENT') {
       return defaultValue;

@@ -1,11 +1,10 @@
 import { Telegraf, session } from 'telegraf';
+import http from 'http';
 import { config } from './config.js';
 import { registerHandlers } from './bot/handlers.js';
 import { ensureDefaultContent } from './services/contentService.js';
 
 await ensureDefaultContent();
-
-const http = require('http');
 
 const PORT = process.env.PORT || 3001;
 
