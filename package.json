@@ -1,0 +1,16 @@
+{
+  "name": "contest-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram contest registration bot with JSON file storage",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "telegraf": "^4.16.3",
+    "xlsx": "^0.18.5"
+  }
+}
